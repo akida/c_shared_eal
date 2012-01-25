@@ -74,9 +74,10 @@ void TurnstileSM( int event )
                     break;
                 case TICK:
                 	TicksCount++;
-                	if (TicksCount > 5)
+                	if (TicksCount > 4)
                 	{
                 		NextState = LOCKED;
+                		TicksCount = 0;
                 	}
                 	break;
                 default:
