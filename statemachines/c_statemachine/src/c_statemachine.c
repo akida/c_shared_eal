@@ -14,6 +14,7 @@ enum states { LOCKED, UNLOCKED, MAXSTATES };
 enum events { PAYED, PERSONPASSED, TICK, MAXEVENTS };
 
 int TS_State = LOCKED;
+
 // forward function declarations
 void Do( int State );
 void OnEnter( int State);
@@ -26,18 +27,12 @@ int main()
 	// simulate how it works.
     TurnstileSM( TICK );
     TurnstileSM( PAYED );
-<<<<<<< HEAD
     TurnstileSM( PERSONPASSED );
     TurnstileSM( PAYED );
 
     int t;
     for (t=0; t<5; t++) TurnstileSM( TICK );
-=======
-    TurnstileSM( PERSONPASSED);
->>>>>>> refs/remotes/Thomas/master
 
-    int i;
-    for(i=0;i<6;i++)
     /* In an actual system it would look more like this:
      *
      * while (1)
@@ -67,15 +62,10 @@ void TurnstileSM( int event )
                 case PAYED:
                     NextState = UNLOCKED;
                     break;
-
-                case PERSONPASSED:
-                  printf("ALARM!! \n");
-                  break;
                 default:
-                  break;
+                    break;
             }
             break;
-<<<<<<< HEAD
         case UNLOCKED:
             switch (event )
             {
@@ -93,22 +83,6 @@ void TurnstileSM( int event )
                 default:
                     break;
             }
-=======
-          case UNLOCKED:
-          switch (event)
-          {
-          case PERSONPASSED:
-            NextState = LOCKED;
-            break;
-          case TICK:
-            if(TICK)
-            {
-                NextState = LOCKED;
-                break;
-            }
-              break;
-          }
->>>>>>> refs/remotes/Thomas/master
             break;
         default:
             break;
@@ -131,12 +105,10 @@ void TurnstileSM( int event )
  *
  * For simulating the SM a bunch of printf statements should be put here.
  */
-void OnEnter( int state )
+void OnEnter( int State )
 {
 
 }
-              // The program should never get here !
-
 
 void OnExit( int State)
 {
