@@ -11,9 +11,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+enum events { NO_EVENT, KEY0_EVENT, KEY1_EVENT, KEY2_EVENT };
+
 int ReadKeys(int RawKeys)
 {
-	return 0;
+	static int key0_count=0;
+	if (RawKeys == 0x01)
+	{
+		key0_count ++;
+		if (key0_count == 4)
+		{
+			return KEY0_EVENT;
+		}
+	}
+	return NO_EVENT;
 }
 
 void testReadKeys(void)
